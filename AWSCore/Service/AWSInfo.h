@@ -28,6 +28,8 @@ FOUNDATION_EXPORT NSString *const AWSInfoDefault;
 @property (nonatomic, readonly) NSDictionary <NSString *, id> *rootInfoDictionary;
 
 + (instancetype)defaultAWSInfo;
+    
++ (void)setAWSConfig:(NSString *)filePath;
 
 - (nullable AWSServiceInfo *)serviceInfo:(NSString *)serviceName
                                   forKey:(NSString *)key;
