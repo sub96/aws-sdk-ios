@@ -53,7 +53,7 @@ static NSString * AWSConfigFilePath = nil;
 - (instancetype)init {
     if (self = [super init]) {
         
-        NSURL *pathToAWSConfigJson = nil
+        NSURL *pathToAWSConfigJson = nil;
 
         if (AWSConfigFilePath != nil) {
             pathToAWSConfigJson = AWSConfigFilePath;
