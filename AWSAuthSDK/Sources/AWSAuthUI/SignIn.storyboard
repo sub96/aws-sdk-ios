@@ -80,11 +80,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="317"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C4Q-l4-qCO">
-                                        <rect key="frame" x="0.0" y="58.5" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="111" width="375" height="95"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="C4Q-l4-qCO" firstAttribute="height" secondItem="jGi-ey-N0m" secondAttribute="height" multiplier="0.3" id="44U-EE-5TU"/>
                                     <constraint firstItem="C4Q-l4-qCO" firstAttribute="centerX" secondItem="jGi-ey-N0m" secondAttribute="centerX" id="MrC-qs-aFX"/>
                                     <constraint firstItem="C4Q-l4-qCO" firstAttribute="width" secondItem="jGi-ey-N0m" secondAttribute="width" id="coL-DK-Wr1"/>
                                     <constraint firstItem="C4Q-l4-qCO" firstAttribute="centerY" secondItem="jGi-ey-N0m" secondAttribute="centerY" id="vCN-Ro-dg9"/>
@@ -262,7 +263,6 @@
                             <constraint firstItem="Utd-qw-giI" firstAttribute="leading" secondItem="jyk-z8-NkG" secondAttribute="leading" id="H3y-fy-sx7"/>
                             <constraint firstItem="bl8-r9-Ysa" firstAttribute="top" secondItem="IkO-GD-xvp" secondAttribute="bottom" id="IRv-0M-cFp"/>
                             <constraint firstItem="Cbu-Mw-6RD" firstAttribute="leading" secondItem="oXD-JT-iR2" secondAttribute="trailing" constant="8" symbolic="YES" id="ItQ-JO-rAp"/>
-                            <constraint firstItem="C4Q-l4-qCO" firstAttribute="height" secondItem="n6k-Ut-fuw" secondAttribute="height" multiplier="0.3" id="J5I-bR-o3F"/>
                             <constraint firstItem="Utd-qw-giI" firstAttribute="top" secondItem="jyk-z8-NkG" secondAttribute="bottom" constant="8" symbolic="YES" id="KV3-jp-6N3"/>
                             <constraint firstItem="xK4-QM-voz" firstAttribute="top" secondItem="oXD-JT-iR2" secondAttribute="bottom" constant="8" symbolic="YES" id="Nkw-5h-fyV"/>
                             <constraint firstItem="IkO-GD-xvp" firstAttribute="top" secondItem="8lZ-tI-ceJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Ovg-yb-uYe"/>
