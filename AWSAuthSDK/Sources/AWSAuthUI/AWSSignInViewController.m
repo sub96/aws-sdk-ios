@@ -370,7 +370,15 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 130;
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.barTintColor = self.config.backgroundColor ?: DEFAULT_BACKGROUND_COLOR_TOP;
     self.navigationController.navigationBar.tintColor = DEFAULT_BACKGROUND_COLOR_BOTTOM;
-//    self.navigationController.navigationBar.setBackgroundImage()
+    
+    
+    CGRect bottomBorderRect = CGRectMake(0,
+                                         CGRectGetHeight(self.navigationController.navigationBar.frame),
+                                         CGRectGetWidth(self.navigationController.navigationBar.frame),
+                                         1);
+    UIView *bottomBorder = [[UIView alloc] initWithFrame:bottomBorderRect];
+    [bottomBorder setBackgroundColor:color];
+    [self.navigationController.navigationBar addSubview:bottomBorder];
     
 }
 
