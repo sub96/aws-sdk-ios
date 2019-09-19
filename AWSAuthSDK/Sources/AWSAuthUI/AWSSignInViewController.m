@@ -23,7 +23,7 @@
 #import "AWSUserPoolsUIHelper.h"
 #import "AWSSignInViewController.h"
 
-#define DEFAULT_BACKGROUND_COLOR_TOP [UIColor darkGrayColor]
+#define DEFAULT_BACKGROUND_COLOR_TOP [UIColor whiteColor]
 #define DEFAULT_BACKGROUND_COLOR_BOTTOM [UIColor whiteColor]
 #define NAVIGATION_BAR_HEIGHT 64
 
@@ -310,9 +310,9 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     } else {
         if (self.config.enableUserPoolsUI &&
             [self.config hasSignInButtonView]) {
-            self.logoViewHeight.constant = SCALED_DOWN_LOGO_IMAGE_HEIGHT;
+//            self.logoViewHeight.constant = SCALED_DOWN_LOGO_IMAGE_HEIGHT;
         } else {
-            self.logoViewHeight.constant = SCALED_UP_LOGO_IMAGE_HEIGHT;
+//            self.logoViewHeight.constant = SCALED_UP_LOGO_IMAGE_HEIGHT;
         }
         self.logoView.image = image;
         self.logoView.contentMode = UIViewContentModeScaleAspectFit;
