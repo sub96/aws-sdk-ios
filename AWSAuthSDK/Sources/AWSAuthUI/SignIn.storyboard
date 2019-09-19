@@ -80,14 +80,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="361.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C4Q-l4-qCO">
-                                        <rect key="frame" x="0.0" y="30.5" width="414" height="172.5"/>
+                                        <rect key="frame" x="142" y="52" width="130" height="130"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="130" id="HeF-jD-iG9"/>
+                                            <constraint firstAttribute="width" secondItem="C4Q-l4-qCO" secondAttribute="height" id="ILe-zc-7jh"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="C4Q-l4-qCO" firstAttribute="height" secondItem="jGi-ey-N0m" secondAttribute="height" multiplier="0.3" constant="64" id="44U-EE-5TU"/>
                                     <constraint firstItem="C4Q-l4-qCO" firstAttribute="centerX" secondItem="jGi-ey-N0m" secondAttribute="centerX" id="MrC-qs-aFX"/>
-                                    <constraint firstItem="C4Q-l4-qCO" firstAttribute="width" secondItem="jGi-ey-N0m" secondAttribute="width" id="coL-DK-Wr1"/>
                                     <constraint firstItem="C4Q-l4-qCO" firstAttribute="centerY" secondItem="jGi-ey-N0m" secondAttribute="centerY" constant="-64" id="vCN-Ro-dg9"/>
                                 </constraints>
                             </view>
