@@ -37,7 +37,7 @@ static NSString *const SIGNIN_VIEW_CONTROLLER_IDENTIFIER = @"SignIn";;
 static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";
 
 static NSInteger const SCALED_UP_LOGO_IMAGE_HEIGHT = 230;
-static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 130;
+static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 
 @interface AWSSignInViewController ()
 
@@ -308,12 +308,12 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 130;
             [self.view layoutIfNeeded];
         }
     } else {
-//        if (self.config.enableUserPoolsUI &&
-//            [self.config hasSignInButtonView]) {
-//            self.logoViewHeight.constant = SCALED_DOWN_LOGO_IMAGE_HEIGHT;
-//        } else {
-//            self.logoViewHeight.constant = SCALED_UP_LOGO_IMAGE_HEIGHT;
-//        }
+        if (self.config.enableUserPoolsUI &&
+            [self.config hasSignInButtonView]) {
+            self.logoViewHeight.constant = SCALED_DOWN_LOGO_IMAGE_HEIGHT;
+        } else {
+            self.logoViewHeight.constant = SCALED_UP_LOGO_IMAGE_HEIGHT;
+        }
         self.logoView.image = image;
         self.logoView.contentMode = UIViewContentModeScaleAspectFit;
         [self.logoView setNeedsLayout];
