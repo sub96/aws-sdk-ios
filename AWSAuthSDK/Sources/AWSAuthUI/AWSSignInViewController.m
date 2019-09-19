@@ -370,6 +370,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.barTintColor = self.config.backgroundColor ?: DEFAULT_BACKGROUND_COLOR_TOP;
     self.navigationController.navigationBar.tintColor = DEFAULT_BACKGROUND_COLOR_BOTTOM;
+//    self.navigationController.navigationBar.setBackgroundImage()
     
 }
 
