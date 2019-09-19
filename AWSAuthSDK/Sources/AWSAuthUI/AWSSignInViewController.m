@@ -377,7 +377,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 130;
                                          CGRectGetWidth(self.navigationController.navigationBar.frame),
                                          1);
     UIView *bottomBorder = [[UIView alloc] initWithFrame:bottomBorderRect];
-    [bottomBorder setBackgroundColor:color];
+    [bottomBorder setBackgroundColor:UIColor.whiteColor];
     [self.navigationController.navigationBar addSubview:bottomBorder];
     
 }
