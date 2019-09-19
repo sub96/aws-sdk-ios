@@ -46,7 +46,7 @@
     self = [super init];
     if (self) {
         self.registeredSignInButtonViews = [[NSMutableArray alloc] init];
-        self.disableSignUpButton = NO;
+        self.disableSignUpButton = YES;
     }
     return self;
 }
