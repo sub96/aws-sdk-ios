@@ -77,9 +77,10 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C4Q-l4-qCO">
-                                <rect key="frame" x="16" y="30" width="343" height="140"/>
+                                <rect key="frame" x="122.5" y="30" width="130" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="69B-iV-vXW"/>
+                                    <constraint firstAttribute="width" constant="130" id="Aqe-ip-66G"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lZ-tI-ceJ">
@@ -262,7 +263,6 @@
                             <constraint firstItem="cMG-il-Rxs" firstAttribute="top" secondItem="IkO-GD-xvp" secondAttribute="bottom" id="WFW-nb-k3e"/>
                             <constraint firstItem="Cbu-Mw-6RD" firstAttribute="top" secondItem="DRt-0S-n1y" secondAttribute="top" id="Z6Q-o6-9eB"/>
                             <constraint firstItem="8lZ-tI-ceJ" firstAttribute="centerX" secondItem="n6k-Ut-fuw" secondAttribute="centerX" id="Z6c-Ne-U4F"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="C4Q-l4-qCO" secondAttribute="leading" id="asV-AN-if4"/>
                             <constraint firstItem="xK4-QM-voz" firstAttribute="centerX" secondItem="oXD-JT-iR2" secondAttribute="centerX" id="blc-h6-gp9"/>
                             <constraint firstItem="xK4-QM-voz" firstAttribute="leading" secondItem="jyk-z8-NkG" secondAttribute="leading" id="dr3-TW-SP5"/>
                             <constraint firstItem="oXD-JT-iR2" firstAttribute="leading" secondItem="DRt-0S-n1y" secondAttribute="trailing" constant="8" symbolic="YES" id="enS-bR-n6c"/>
