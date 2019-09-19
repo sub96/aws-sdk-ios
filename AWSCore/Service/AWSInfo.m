@@ -53,7 +53,7 @@ static NSString * AWSConfigFilePath = nil;
 - (instancetype)init {
     if (self = [super init]) {
         
-        NSString *pathToAWSConfigJson = nil;
+        NSURL *pathToAWSConfigJson = nil;
         
         if (AWSConfigFilePath != nil) {
             pathToAWSConfigJson = AWSConfigFilePath;
@@ -61,7 +61,7 @@ static NSString * AWSConfigFilePath = nil;
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             NSString *fileString = [defaults stringForKey:@"awsconfiguration"];
             NSURL *fileURL = [NSURL URLWithString:fileString];
-            pathToAWSConfigJson = fileString;
+            pathToAWSConfigJson = fileURL;
         }
         
         if (pathToAWSConfigJson) {
