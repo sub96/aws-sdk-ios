@@ -153,9 +153,9 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     [self addButtonViewstoSignInView];
     
     // Setup the font
-    if (self.config.font) {
-        [self setUpFont];
-    }
+    [self setUpFont];
+//    if (self.config.font) {
+//    }
 }
     
 - (void)viewWillAppear:(BOOL)animated {
