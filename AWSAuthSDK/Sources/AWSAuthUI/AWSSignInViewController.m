@@ -153,9 +153,9 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     [self addButtonViewstoSignInView];
     
     // Setup the font
-//    if (self.config.font) {
-//        [self setUpFont];
-//    }
+    if (self.config.font) {
+        [self setUpFont];
+    }
 }
     
 - (void)viewWillAppear:(BOOL)animated {
@@ -229,9 +229,21 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     if (self.config.enableUserPoolsUI) {
         AWSDDLogDebug(@"User Pools Enabled. Setting up the view...");
         Class formTableCell = NSClassFromString(@"AWSFormTableCell");
-        self.passwordRow = [[formTableCell alloc] initWithPlaceHolder:@"Password"
+        NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        NSString *username;
+        NSString *password;
+        
+        if ([language  isEqual: @"nl"]) {
+            username = @"Gebruikersnaam";
+            password = @"Wachtwoord";
+        } else {
+            username = @"User Name";
+            password = @"Password";
+        }
+        
+        self.passwordRow = [[formTableCell alloc] initWithPlaceHolder:password
                                                                  type:InputTypePassword];
-        self.userNameRow = [[formTableCell alloc] initWithPlaceHolder:@"User Name"
+        self.userNameRow = [[formTableCell alloc] initWithPlaceHolder:username
                                                                  type:InputTypeText];
         Class formTableDelegate = NSClassFromString(@"AWSFormTableDelegate");
         self.tableDelegate = [formTableDelegate new];
@@ -354,13 +366,26 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 }
 
 - (void)setUpNavigationController {
+    NSString *navTitle;
+    NSString *cancel;
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
     
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"SourceSansPro-Regular" size:17], NSFontAttributeName, nil]];
-    self.navigationController.navigationBar.topItem.title = @"Sign In";
+    if ([language  isEqual: @"nl"]) {
+        navTitle = @"Log in";
+        cancel = @"Annuleer";
+        
+    } else {
+        navTitle = @"Sign In";
+        cancel = @"Cancel";
+    }
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSFontAttributeName:[UIFont fontWithName:@"SourceSansPro-Regular" size:17]}];
+    self.navigationController.navigationBar.topItem.title = navTitle;
     
     self.canCancel = self.config.canCancel;
     if (self.canCancel) {
-        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:cancel
                                                                          style:UIBarButtonItemStylePlain
                                                                         target:self
                                                                         action:@selector(barButtonClosePressed)];
@@ -389,10 +414,31 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 
 - (void)setUpFont {
     AWSDDLogDebug(@"Setting up Font");
-    [self.signInButton.titleLabel setFont:self.config.font];
-    [self.signUpButton.titleLabel setFont:self.config.font];
-    [self.forgotPasswordButton.titleLabel setFont:self.config.font];
-    [self.orSignInWithLabel setFont:self.config.font];
+    NSString *signIn;
+    NSString *forgotPassword;
+
+    
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+
+    if ([language  isEqual: @"nl"]) {
+        forgotPassword = @"Wachtwoord vergeten?";
+        signIn = @"Log in";
+        
+    } else {
+        forgotPassword = @"Forgot your password?";
+        signIn = @"Sign in";
+    }
+    
+    
+    [self.signInButton.titleLabel setText:signIn];
+    [self.forgotPasswordButton.titleLabel setText:signIn];
+
+    
+    
+//    [self.signInButton.titleLabel setFont:self.config.font];
+//    [self.signUpButton.titleLabel setFont:self.config.font];
+//    [self.forgotPasswordButton.titleLabel setFont:self.config.font];
+//    [self.orSignInWithLabel setFont:self.config.font];
 }
 
 - (void)barButtonClosePressed {
