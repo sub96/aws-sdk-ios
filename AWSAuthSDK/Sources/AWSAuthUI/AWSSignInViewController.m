@@ -422,10 +422,11 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     if ([language containsString:@"nl"]) {
         forgotPassword = @"Wachtwoord vergeten?";
         signIn = @"Log in";
-        
+        [self.forgotPasswordButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:12]];
     } else {
         forgotPassword = @"Forgot your password?";
         signIn = @"Sign in";
+        [self.forgotPasswordButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:13]];
     }
     
     [self.signInButton.titleLabel setText:signIn];
@@ -433,9 +434,9 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 
     
     
-//    [self.signInButton.titleLabel setFont:self.config.font];
+    [self.signInButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:15]];
+    
 //    [self.signUpButton.titleLabel setFont:self.config.font];
-//    [self.forgotPasswordButton.titleLabel setFont:self.config.font];
 //    [self.orSignInWithLabel setFont:self.config.font];
 }
 
