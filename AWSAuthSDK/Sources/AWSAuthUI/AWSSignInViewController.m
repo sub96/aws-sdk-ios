@@ -430,7 +430,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     
     
     [self.signInButton.titleLabel setText:signIn];
-    [self.forgotPasswordButton.titleLabel setText:signIn];
+    [self.forgotPasswordButton.titleLabel setText:forgotPassword];
 
     
     
