@@ -176,7 +176,6 @@ static NSString * AWSConfigFilePath = nil;
     
     _defaultRegion = [[defaultInfoDictionary objectForKey:AWSInfoRegion] aws_regionTypeValue];
 }
-}
 
 - (AWSServiceInfo *)serviceInfo:(NSString *)serviceName
                          forKey:(NSString *)key {
