@@ -261,7 +261,8 @@ final public class AWSMobileClient: _AWSMobileClient {
                 cognitoAuth.delegate = self
             }
             
-            let infoObject = AWSInfo.default().defaultServiceInfo("IdentityManager")
+            let info = AWSInfo.init()
+            let infoObject = info.defaultServiceInfo("IdentityManager")
             if let credentialsProvider = infoObject?.cognitoCredentialsProvider {
                 
                 self.isAuthorizationAvailable = true
