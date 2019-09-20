@@ -72,8 +72,8 @@
                                 <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl8-r9-Ysa">
-                                <rect key="frame" x="203.5" y="373" width="124" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl8-r9-Ysa">
+                                <rect key="frame" x="47.5" y="373" width="280" height="29"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
                                 <state key="normal" title="Forgot your password?">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -265,6 +265,7 @@
                             <constraint firstItem="xK4-QM-voz" firstAttribute="top" secondItem="oXD-JT-iR2" secondAttribute="bottom" constant="8" symbolic="YES" id="Nkw-5h-fyV"/>
                             <constraint firstItem="8lZ-tI-ceJ" firstAttribute="top" secondItem="C4Q-l4-qCO" secondAttribute="bottom" constant="10" id="OhP-Az-vWQ"/>
                             <constraint firstItem="IkO-GD-xvp" firstAttribute="top" secondItem="8lZ-tI-ceJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Ovg-yb-uYe"/>
+                            <constraint firstItem="bl8-r9-Ysa" firstAttribute="width" secondItem="IkO-GD-xvp" secondAttribute="width" id="T2Q-mg-3PZ"/>
                             <constraint firstItem="S1T-RK-06i" firstAttribute="leading" secondItem="n6k-Ut-fuw" secondAttribute="leadingMargin" id="TBQ-kj-KwZ"/>
                             <constraint firstItem="Cbu-Mw-6RD" firstAttribute="top" secondItem="DRt-0S-n1y" secondAttribute="top" id="Z6Q-o6-9eB"/>
                             <constraint firstItem="8lZ-tI-ceJ" firstAttribute="centerX" secondItem="n6k-Ut-fuw" secondAttribute="centerX" id="Z6c-Ne-U4F"/>
