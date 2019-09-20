@@ -184,10 +184,10 @@ final public class AWSMobileClient: _AWSMobileClient {
                 return
             }
             
-//            if (isInitialized) {
-//                completionHandler(self.currentUserState, nil)
-//                return
-//            }
+            if (isInitialized) {
+                completionHandler(self.currentUserState, nil)
+                return
+            }
             
             self.loadLoginsMapFromKeychain()
             // Updated logic to determine federation provider from keychain.
