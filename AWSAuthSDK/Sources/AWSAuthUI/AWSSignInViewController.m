@@ -233,7 +233,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
         NSString *username;
         NSString *password;
         
-        if ([language rangeOfString:@"nl"].location != NSNotFound) {
+        if ([language containsString:@"nl"]) {
             username = @"Gebruikersnaam";
             password = @"Wachtwoord";
         } else {
@@ -369,8 +369,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     NSString *navTitle;
     NSString *cancel;
     NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
-    
-    if ([language rangeOfString:@"nl"].location != NSNotFound) {
+    if ([language containsString:@"nl"]) {
         navTitle = @"Log in";
         cancel = @"Annuleer";
         
@@ -420,7 +419,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     
     NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
 
-    if ([language rangeOfString:@"nl"].location != NSNotFound) {
+    if ([language containsString:@"nl"]) {
         forgotPassword = @"Wachtwoord vergeten?";
         signIn = @"Log in";
         
