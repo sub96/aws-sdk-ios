@@ -354,7 +354,10 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 }
 
 - (void)setUpNavigationController {
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"SourceSansPro-Regular" size:17], NSFontAttributeName, nil]];
     self.navigationController.navigationBar.topItem.title = @"Sign In";
+    
     self.canCancel = self.config.canCancel;
     if (self.canCancel) {
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
@@ -362,6 +365,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
                                                                         target:self
                                                                         action:@selector(barButtonClosePressed)];
         cancelButton.tintColor = [UIColor whiteColor];
+        [cancelButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"SourceSansPro-Regular" size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
+        
         self.navigationController.navigationBar.topItem.leftBarButtonItem = cancelButton;
     }
     self.navigationController.navigationBar.titleTextAttributes = @{
