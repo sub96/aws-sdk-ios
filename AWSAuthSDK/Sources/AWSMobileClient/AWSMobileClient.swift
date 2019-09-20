@@ -292,7 +292,7 @@ final public class AWSMobileClient: _AWSMobileClient {
                 currentUserState = .signedOut
                 completionHandler(.signedOut, nil)
             }
-            isInitialized = true
+//            isInitialized = true
         }
     }
     
