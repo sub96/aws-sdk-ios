@@ -126,7 +126,56 @@ static NSString * AWSConfigFilePath = nil;
 }
 
 + (void)setAWSConfig: (NSString *)filePath {
-    AWSConfigFilePath = filePath;
+    NSURL *pathToAWSConfigJson = nil;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *fileString = [defaults stringForKey:@"awsconfiguration"];
+    NSURL *fileURL = [NSURL URLWithString:fileString];
+    pathToAWSConfigJson = fileURL;
+    
+    if (pathToAWSConfigJson) {
+        NSData *data = [NSData dataWithContentsOfFile:pathToAWSConfigJson];
+        if (!data) {
+            AWSDDLogError(@"Couldn't read the awsconfiguration.json file. Skipping load of awsconfiguration.json.");
+        } else {
+            NSError *error = nil;
+            NSDictionary <NSString *, id> *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                                            options:kNilOptions
+                                                                                              error:&error];
+            if (!jsonDictionary || [jsonDictionary count] <= 0 || error) {
+                AWSDDLogError(@"Couldn't deserialize data from the JSON file or the contents are empty. Please check the awsconfiguration.json file.");
+            } else {
+                _rootInfoDictionary = jsonDictionary;
+            }
+        }
+        
+    } else {
+        AWSDDLogDebug(@"Couldn't locate the awsconfiguration.json file. Skipping load of awsconfiguration.json.");
+    }
+    
+    if (!_rootInfoDictionary) {
+        _rootInfoDictionary = [[[NSBundle mainBundle] infoDictionary] objectForKey:AWSInfoRoot];
+    }
+    
+    if (_rootInfoDictionary) {
+        NSString *userAgent = [self.rootInfoDictionary objectForKey:AWSInfoUserAgent];
+        if (userAgent) {
+            [AWSServiceConfiguration addGlobalUserAgentProductToken:userAgent];
+        }
+    }
+    
+    NSDictionary <NSString *, id> *defaultInfoDictionary = [_rootInfoDictionary objectForKey:AWSInfoDefault];
+    
+    NSDictionary <NSString *, id> *defaultCredentialsProviderDictionary = [[[_rootInfoDictionary objectForKey:AWSInfoCredentialsProvider] objectForKey:AWSInfoCognitoIdentity] objectForKey:AWSInfoDefault];
+    NSString *cognitoIdentityPoolID = [defaultCredentialsProviderDictionary objectForKey:AWSInfoCognitoIdentityPoolId];
+    AWSRegionType cognitoIdentityRegion =  [[defaultCredentialsProviderDictionary objectForKey:AWSInfoRegion] aws_regionTypeValue];
+    if (cognitoIdentityPoolID && cognitoIdentityRegion != AWSRegionUnknown) {
+        _defaultCognitoCredentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:cognitoIdentityRegion
+                                                                                        identityPoolId:cognitoIdentityPoolID];
+    }
+    
+    _defaultRegion = [[defaultInfoDictionary objectForKey:AWSInfoRegion] aws_regionTypeValue];
+}
 }
 
 - (AWSServiceInfo *)serviceInfo:(NSString *)serviceName
