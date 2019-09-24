@@ -29,6 +29,7 @@ static NSString *const AWSInfoCognitoIdentityPoolId = @"PoolId";
 static NSString *const AWSInfoCognitoUserPool = @"CognitoUserPool";
 
 static NSString *const AWSInfoIdentityManager = @"IdentityManager";
+static NSString *AWSConfigFilePath = nil
 
 @interface AWSInfo()
 
@@ -80,8 +81,13 @@ static NSDictionary<NSString *, id> * _userConfig = nil;
 
 - (instancetype)init {
     NSDictionary<NSString *, id> *config;
-    NSString *pathToAWSConfigJson = [[NSBundle mainBundle] pathForResource:@"awsconfiguration"
-                                                                    ofType:@"json"];
+    NSString *pathToAWSConfigJson = nil;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *fileString = [defaults stringForKey:@"awsconfiguration"];
+    NSURL *fileURL = [NSURL URLWithString:fileString];
+    pathToAWSConfigJson = fileURL;
+
     if (pathToAWSConfigJson) {
         NSData *data = [NSData dataWithContentsOfFile:pathToAWSConfigJson];
         if (!data) {
