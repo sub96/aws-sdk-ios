@@ -115,8 +115,16 @@ static NSDictionary<NSString *, id> * _userConfig = nil;
 
 - (instancetype)init {
     NSDictionary<NSString *, id> *config;
-    NSString *pathToAWSConfigJson = [[NSBundle mainBundle] pathForResource:@"awsconfiguration"
-                                                                    ofType:@"json"];
+    NSString *pathToAWSConfigJson = nil;
+    
+    if (AWSConfigFilePath != nil) {
+        pathToAWSConfigJson = AWSConfigFilePath;
+    } else {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *fileString = [defaults stringForKey:@"awsconfiguration"];
+        NSURL *fileURL = [NSURL URLWithString:fileString];
+        pathToAWSConfigJson = fileURL;
+    }
     if (pathToAWSConfigJson) {
         NSData *data = [NSData dataWithContentsOfFile:pathToAWSConfigJson];
         if (!data) {
