@@ -416,24 +416,20 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     NSString *signIn;
     NSString *forgotPassword;
 
-    
     NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
 
     if ([language containsString:@"nl"]) {
         forgotPassword = @"Wachtwoord vergeten?";
         signIn = @"Log in";
-        [self.forgotPasswordButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:12]];
     } else {
         forgotPassword = @"Forgot your password?";
         signIn = @"Sign in";
-        [self.forgotPasswordButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:13]];
     }
     
     [self.signInButton.titleLabel setText:signIn];
     [self.forgotPasswordButton.titleLabel setText:forgotPassword];
-
     
-    
+    [self.forgotPasswordButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:13]];
     [self.signInButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:15]];
     
 //    [self.signUpButton.titleLabel setFont:self.config.font];
