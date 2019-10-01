@@ -73,6 +73,15 @@ static NSString *const AWSInfoGoogleIdentifier = @"GoogleSignIn";
         [loginController createInternalCompletionHandler];
         
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loginController];
+        
+        if (@available(iOS 13.0, *)) {
+            loginController.modalPresentationStyle = UIModalPresentationFullScreen;
+            [loginController setModalInPresentation: YES];
+            
+            navController.modalPresentationStyle = UIModalPresentationFullScreen;
+            [navController setModalInPresentation: YES];
+        }
+        
         [navigationController presentViewController:navController
                                            animated:YES
                                          completion:nil];
@@ -96,6 +105,15 @@ static NSString *const AWSInfoGoogleIdentifier = @"GoogleSignIn";
         loginController.completionHandler = completionHandler;
         
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loginController];
+        
+        if (@available(iOS 13.0, *)) {
+            loginController.modalPresentationStyle = UIModalPresentationFullScreen;
+            [loginController setModalInPresentation: YES];
+            
+            navController.modalPresentationStyle = UIModalPresentationFullScreen;
+            [navController setModalInPresentation: YES];
+        }
+        
         [navigationController presentViewController:navController
                                            animated:YES
                                          completion:nil];
