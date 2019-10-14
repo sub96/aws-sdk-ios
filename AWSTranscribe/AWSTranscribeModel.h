@@ -440,6 +440,11 @@ typedef NS_ENUM(NSInteger, AWSTranscribeVocabularyState) {
 @property (nonatomic, strong) NSString * _Nullable outputBucketName;
 
 /**
+ 
+ */
+@property (nonatomic, strong) NSString * _Nullable outputEncryptionKMSKeyId;
+
+/**
  <p>A <code>Settings</code> object that provides optional settings for a transcription job.</p>
  */
 @property (nonatomic, strong) AWSTranscribeSettings * _Nullable settings;
@@ -541,7 +546,7 @@ typedef NS_ENUM(NSInteger, AWSTranscribeVocabularyState) {
 @end
 
 /**
- <p>Provides a summary of information about a transcription job. .</p>
+ <p>Provides a summary of information about a transcription job.</p>
  */
 @interface AWSTranscribeTranscriptionJobSummary : AWSModel
 

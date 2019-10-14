@@ -115,6 +115,7 @@ static NSDictionary<NSString *, id> * _userConfig = nil;
 
 - (instancetype)init {
     NSDictionary<NSString *, id> *config;
+
     NSString *pathToAWSConfigJson = nil;
     
     if (AWSConfigFilePath != nil) {
@@ -125,6 +126,7 @@ static NSDictionary<NSString *, id> * _userConfig = nil;
         NSURL *fileURL = [NSURL URLWithString:fileString];
         pathToAWSConfigJson = fileURL;
     }
+
     if (pathToAWSConfigJson) {
         NSData *data = [NSData dataWithContentsOfFile:pathToAWSConfigJson];
         if (!data) {
@@ -153,14 +155,14 @@ static NSDictionary<NSString *, id> * _userConfig = nil;
 }
 
 + (instancetype)defaultAWSInfo {
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//    });
-    if (_userConfig) {
-        _defaultAWSInfo = [[AWSInfo alloc] initWithConfiguration:_userConfig];
-    } else {
-        _defaultAWSInfo = [AWSInfo new];
-    }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (_userConfig) {
+            _defaultAWSInfo = [[AWSInfo alloc] initWithConfiguration:_userConfig];
+        } else {
+            _defaultAWSInfo = [AWSInfo new];
+        }
+    });
 
     return _defaultAWSInfo;
 }
