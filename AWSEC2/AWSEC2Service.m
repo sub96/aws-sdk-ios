@@ -26,7 +26,7 @@
 #import "AWSEC2Serializer.h"
 
 static NSString *const AWSInfoEC2 = @"EC2";
-NSString *const AWSEC2SDKVersion = @"2.12.0";
+NSString *const AWSEC2SDKVersion = @"2.12.1";
 
 
 @interface AWSEC2ResponseSerializer : AWSXMLResponseSerializer
@@ -2685,6 +2685,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
         if (completionHandler) {
             completionHandler(error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSEC2DeleteQueuedReservedInstancesResult *> *)deleteQueuedReservedInstances:(AWSEC2DeleteQueuedReservedInstancesRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@""
+                 operationName:@"DeleteQueuedReservedInstances"
+                   outputClass:[AWSEC2DeleteQueuedReservedInstancesResult class]];
+}
+
+- (void)deleteQueuedReservedInstances:(AWSEC2DeleteQueuedReservedInstancesRequest *)request
+     completionHandler:(void (^)(AWSEC2DeleteQueuedReservedInstancesResult *response, NSError *error))completionHandler {
+    [[self deleteQueuedReservedInstances:request] continueWithBlock:^id _Nullable(AWSTask<AWSEC2DeleteQueuedReservedInstancesResult *> * _Nonnull task) {
+        AWSEC2DeleteQueuedReservedInstancesResult *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
         }
 
         return nil;
