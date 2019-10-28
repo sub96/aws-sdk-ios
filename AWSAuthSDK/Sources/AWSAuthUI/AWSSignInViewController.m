@@ -406,7 +406,14 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.barTintColor = self.config.backgroundColor ?: DEFAULT_BACKGROUND_COLOR_TOP;
     self.navigationController.navigationBar.tintColor = DEFAULT_BACKGROUND_COLOR_BOTTOM;
-    
+ 
+    CGRect bottomBorderRect = CGRectMake(0,
+                                         CGRectGetHeight(self.navigationController.navigationBar.frame),
+                                         CGRectGetWidth(self.navigationController.navigationBar.frame),
+                                         1);
+    UIView *bottomBorder = [[UIView alloc] initWithFrame:bottomBorderRect];
+    [bottomBorder setBackgroundColor:UIColor.whiteColor];
+    [self.navigationController.navigationBar addSubview:bottomBorder];
 }
 
 - (void)setUpFont {
@@ -425,8 +432,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
         signIn = @"Sign in";
     }
     
-//    [self.forgotPasswordButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:13]];
-//    [self.signInButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:15]];
+    [self.forgotPasswordButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:13]];
+    [self.signInButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:15]];
 
     [self.signInButton.titleLabel setText:signIn];
     [self.forgotPasswordButton.titleLabel setText:forgotPassword];
