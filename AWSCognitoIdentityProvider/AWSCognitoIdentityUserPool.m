@@ -499,7 +499,11 @@ shouldProvideCognitoValidationData:(BOOL)shouldProvideCognitoValidationData
     if(userAttributes){
         [userAttributes enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL* stop) {
             AWSCognitoIdentityUserAttributeType * att = [[AWSCognitoIdentityUserAttributeType alloc] initWithName: key value: value];
-            [userAttributesArray addObject:att];
+            if ([key containsString:@"email_verified"]) {
+#warning
+            } else {
+                [userAttributesArray addObject:att];
+            }
         }];
     }
     return [self initWithProposedPassword:proposedPassword userAttributesArray:userAttributesArray];
