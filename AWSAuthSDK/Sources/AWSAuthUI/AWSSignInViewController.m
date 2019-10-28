@@ -23,6 +23,8 @@
 #import "AWSSignInViewController.h"
 
 #define NAVIGATION_BAR_HEIGHT 64
+#define DEFAULT_BACKGROUND_COLOR_TOP [UIColor whiteColor]
+#define DEFAULT_BACKGROUND_COLOR_BOTTOM [UIColor whiteColor]
 
 static NSString *const RESOURCES_BUNDLE = @"AWSAuthUI.bundle";
 static NSString *const SMALL_IMAGE_NAME = @"logo-aws-small";
@@ -150,9 +152,9 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     [self addButtonViewstoSignInView];
     
     // Setup the font
-    if (self.config.font) {
-        [self setUpFont];
-    }
+    [self setUpFont];
+//    if (self.config.font) {
+//    }
 }
     
 - (void)viewWillAppear:(BOOL)animated {
@@ -226,9 +228,21 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     if (self.config.enableUserPoolsUI) {
         AWSDDLogDebug(@"User Pools Enabled. Setting up the view...");
         Class formTableCell = NSClassFromString(@"AWSFormTableCell");
-        self.passwordRow = [[formTableCell alloc] initWithPlaceHolder:@"Password"
+        NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        NSString *username;
+        NSString *password;
+        
+        if ([language containsString:@"nl"]) {
+            username = @"Gebruikersnaam";
+            password = @"Wachtwoord";
+        } else {
+            username = @"User Name";
+            password = @"Password";
+        }
+        
+        self.passwordRow = [[formTableCell alloc] initWithPlaceHolder:password
                                                                  type:InputTypePassword];
-        self.userNameRow = [[formTableCell alloc] initWithPlaceHolder:@"User Name"
+        self.userNameRow = [[formTableCell alloc] initWithPlaceHolder:username
                                                                  type:InputTypeText];
         Class formTableDelegate = NSClassFromString(@"AWSFormTableDelegate");
         self.tableDelegate = [formTableDelegate new];
@@ -359,34 +373,67 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 }
 
 - (void)setUpNavigationController {
-    UIColor *textColor = [AWSAuthUIHelper getTextColor:config];
-
-    self.navigationController.navigationBar.topItem.title = @"Sign In";
+    NSString *navTitle;
+    NSString *cancel;
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if ([language containsString:@"nl"]) {
+        navTitle = @"Log in";
+        cancel = @"Annuleer";
+        
+    } else {
+        navTitle = @"Sign In";
+        cancel = @"Cancel";
+    }
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSFontAttributeName:[UIFont fontWithName:@"SourceSansPro-Regular" size:17]}];
+    self.navigationController.navigationBar.topItem.title = navTitle;
+    
     self.canCancel = self.config.canCancel;
     if (self.canCancel) {
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
                                                                          style:UIBarButtonItemStylePlain
                                                                         target:self
                                                                         action:@selector(barButtonClosePressed)];
-        cancelButton.tintColor = textColor;
+        cancelButton.tintColor = [UIColor whiteColor];
+        [cancelButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"SourceSansPro-Regular" size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
         self.navigationController.navigationBar.topItem.leftBarButtonItem = cancelButton;
     }
     
     self.navigationController.navigationBar.titleTextAttributes = @{
-                                                                    NSForegroundColorAttributeName: textColor,
+                                                                    NSForegroundColorAttributeName: [UIColor whiteColor],
                                                                     };
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barTintColor = [AWSAuthUIHelper getBackgroundColor:config];
-    self.navigationController.navigationBar.tintColor = textColor;
+    self.navigationController.navigationBar.barTintColor = self.config.backgroundColor ?: DEFAULT_BACKGROUND_COLOR_TOP;
+    self.navigationController.navigationBar.tintColor = DEFAULT_BACKGROUND_COLOR_BOTTOM;
     
 }
 
 - (void)setUpFont {
     AWSDDLogDebug(@"Setting up Font");
-    [self.signInButton.titleLabel setFont:self.config.font];
-    [self.signUpButton.titleLabel setFont:self.config.font];
-    [self.forgotPasswordButton.titleLabel setFont:self.config.font];
-    [self.orSignInWithLabel setFont:self.config.font];
+    
+    NSString *signIn;
+    NSString *forgotPassword;
+    
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    
+    if ([language containsString:@"nl"]) {
+        forgotPassword = @"Wachtwoord vergeten?";
+        signIn = @"Log in";
+    } else {
+        forgotPassword = @"Forgot your password?";
+        signIn = @"Sign in";
+    }
+    
+//    [self.forgotPasswordButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:13]];
+//    [self.signInButton.titleLabel setFont:[UIFont fontWithName:@"SourceSansPro-Regular" size:15]];
+
+    [self.signInButton.titleLabel setText:signIn];
+    [self.forgotPasswordButton.titleLabel setText:forgotPassword];
+
+    [self.signUpButton setHidden:true];
+//    [self.signUpButton.titleLabel setFont:self.config.font];
+//    [self.orSignInWithLabel setFont:self.config.font];
 }
 
 - (void)barButtonClosePressed {
