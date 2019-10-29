@@ -1149,8 +1149,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="55s-y1-YiO"/>
                     <connections>
+                        <outlet property="subTitle" destination="BzB-cM-Tyh" id="7uv-rH-m3i"/>
                         <outlet property="tableFormView" destination="9v8-wH-78z" id="RgC-Dw-2i8"/>
                         <outlet property="tableView" destination="pLq-FM-ZZi" id="bcK-I7-8sI"/>
+                        <outlet property="updatePasswordButton" destination="Dt2-QQ-w90" id="BGn-nf-HQx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="icP-5k-WOw" userLabel="First Responder" sceneMemberID="firstResponder"/>

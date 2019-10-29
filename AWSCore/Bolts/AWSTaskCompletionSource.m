@@ -42,9 +42,11 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Custom Setters/Getters
 
 - (void)setResult:(nullable id)result {
-    if (![self.task trySetResult:result]) {
-        [NSException raise:NSInternalInconsistencyException
-                    format:@"Cannot set the result on a completed task."];
+    if (!self.task.completed) {
+        if (![self.task trySetResult:result]) {
+            [NSException raise:NSInternalInconsistencyException
+                        format:@"Cannot set the result on a completed task."];
+        }
     }
 }
 

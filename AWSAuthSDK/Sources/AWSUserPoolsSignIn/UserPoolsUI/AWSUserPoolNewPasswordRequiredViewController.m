@@ -48,7 +48,17 @@
 }
 
 - (void)setUp {
-    _passwordRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"New Password" type:InputTypePassword];
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSString *placeholder;
+    if ([language containsString:@"nl"]) {
+        placeholder = @"Nieuw Paswoord";
+        [self.updatePasswordButton setTitle:@"Vernieuw Wachtwoord" forState:UIControlStateNormal];
+        [self.subTitle setText:@"Voer hieronder uw nieuwe wachtwoord in"];
+    } else {
+        placeholder = @"New Password";
+    }
+    
+    _passwordRow = [[AWSFormTableCell alloc] initWithPlaceHolder:placeholder type:InputTypePassword];
     _tableDelegate = [AWSFormTableDelegate new];
     [self.tableDelegate addCell:self.passwordRow];
     self.tableView.delegate = self.tableDelegate;
@@ -65,7 +75,13 @@
         self.view.backgroundColor = [AWSAuthUIHelper getSecondaryBackgroundColor];
     }
     
-    self.title = @"New Password Required";
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if ([language containsString:@"nl"]) {
+        self.title = @"Nieuw wachtwoord vereist";
+    } else {
+        self.title = @"New Password Required";
+    }
+    
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y)];
     backgroundImageView.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
     backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
