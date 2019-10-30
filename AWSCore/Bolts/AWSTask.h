@@ -46,6 +46,9 @@ extern NSString *const AWSTaskMultipleErrorsUserInfoKey;
  */
 typedef __nullable id(^AWSContinuationBlock)(AWSTask<ResultType> *t);
 
+
+- (instancetype)initWithOldTask:(AWSTask*)oldTask;
+
 /*!
  Creates a task that is already completed with the given result.
  @param result The result for the task.

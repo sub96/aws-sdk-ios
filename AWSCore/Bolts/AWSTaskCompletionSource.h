@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
  The task associated with this TaskCompletionSource.
  */
 @property (nonatomic, strong, readonly) AWSTask<ResultType> *task;
+@property (nonatomic, strong, readonly) AWSTask<ResultType> *taskCopy;
 
 /*!
  Completes the task by setting the result.

@@ -56,6 +56,17 @@ NSString *const AWSTaskMultipleErrorsUserInfoKey = @"errors";
     return self;
 }
 
+- (instancetype)initWithOldTask:(AWSTask*)oldTask {
+    self = [super init];
+    if (!self) return self;
+
+    _lock = oldTask.lock;
+    _condition = oldTask.condition;
+    _callbacks = oldTask.callbacks;
+
+    return self;
+}
+
 - (instancetype)initWithResult:(nullable id)result {
     self = [super init];
     if (!self) return self;

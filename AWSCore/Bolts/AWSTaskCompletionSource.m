@@ -43,7 +43,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setResult:(nullable id)result {
     if (!self.task.completed) {
+        _taskCopy = [[AWSTask alloc] initWithOldTask:self.task];
         if (![self.task trySetResult:result]) {
+            [NSException raise:NSInternalInconsistencyException
+                        format:@"Cannot set the result on a completed task."];
+        }
+    } else {
+        AWSTask *newTask = [[AWSTask alloc] initWithOldTask:self.taskCopy];
+        if (![newTask trySetResult:result]) {
             [NSException raise:NSInternalInconsistencyException
                         format:@"Cannot set the result on a completed task."];
         }
